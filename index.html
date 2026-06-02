@@ -663,7 +663,15 @@
     <h1>Entity Map Builder Claude Skill for B2B SaaS</h1>
     <p>Generate a conforming <code>entitymap.json</code> for a B2B software site, then its <code>entitymap.html</code> companion. The output places the publisher's own definitions into the AI retrieval layer so AI systems stop blending the product with its nearest generic equivalent.</p>
     <p><strong>Standard:</strong> EntityMap v1.0 (the authoritative spec ships with the skill as <code>references/spec-v1.0.md</code>)<br>
-       <strong>Author:</strong> Jack Boutchard founder of Exalt Growth</p>
+       <strong>Author:</strong> <a href="https://www.exaltgrowth.com/authors/jack-boutchard">Jack Boutchard</a> founder of <a href="https://www.exaltgrowth.com/">Exalt Growth</a></p>
+
+    <h2>Tools Required</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tool</th><th>Use Case</th><th>Key Functions</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Firecrawl</strong></td><td>Discover URLs from a domain and scrape pages in markdown as the source of truth for entity and chunk extraction</td><td><code>firecrawl_map</code>, <code>firecrawl_scrape</code></td></tr>
+      </tbody>
+    </table></div>
 
     <h2>Why This Matters for B2B Software</h2>
     <p>AI systems struggle most with novel categories and proprietary terminology. Without a structured declaration of what a product is, what features belong to it, and how it differs from adjacent concepts, AI answers blend the product with the generic category. That erases the differentiation the product team built.</p>
