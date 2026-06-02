@@ -617,14 +617,7 @@
     <span class="chrome-sep">/</span>
     <span class="chrome-crumb">entitymap-builder</span>
     <div class="chrome-actions">
-      <button class="chrome-btn" id="copy-skill-btn" type="button" aria-label="Copy skill content to clipboard">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        <span>Copy Skill</span>
-      </button>
-      <button class="chrome-btn is-primary" id="download-skill-btn" type="button" aria-label="Download skill as markdown">
+      <button class="chrome-btn is-primary" id="download-skill-btn" type="button" aria-label="Download the full skill bundle as a zip">
         <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M8 2v8m0 0L5 7m3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M2.5 11.5v1A1.5 1.5 0 0 0 4 14h8a1.5 1.5 0 0 0 1.5-1.5v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -972,51 +965,17 @@ Write working files to `/home/claude/entitymap/` then copy final deliverables to
 
 <script>
   (function () {
-    const source = document.getElementById('skill-source').textContent.replace(/^\n/, '');
-    const copyBtn = document.getElementById('copy-skill-btn');
     const downloadBtn = document.getElementById('download-skill-btn');
-    const copyLabel = copyBtn.querySelector('span');
-    const originalCopyLabel = copyLabel.textContent;
-
-    async function copySkill() {
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(source);
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = source;
-          ta.style.position = 'fixed';
-          ta.style.opacity = '0';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-        copyBtn.classList.add('is-success');
-        copyLabel.textContent = 'Copied';
-        setTimeout(() => {
-          copyBtn.classList.remove('is-success');
-          copyLabel.textContent = originalCopyLabel;
-        }, 1600);
-      } catch (err) {
-        copyLabel.textContent = 'Copy failed';
-        setTimeout(() => { copyLabel.textContent = originalCopyLabel; }, 1600);
-      }
-    }
 
     function downloadSkill() {
-      const blob = new Blob([source], { type: 'text/markdown;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
-      a.download = 'SKILL.md';
+      a.href = 'entitymap-builder.zip';
+      a.download = 'entitymap-builder.zip';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
-    copyBtn.addEventListener('click', copySkill);
     downloadBtn.addEventListener('click', downloadSkill);
   })();
 </script>
