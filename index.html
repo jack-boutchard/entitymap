@@ -409,6 +409,7 @@
     border-radius: var(--radius-lg);
     padding: 36px 44px;
     box-shadow: var(--shadow-sm);
+    overflow-wrap: break-word;
   }
   .content > *:first-child { margin-top: 0; }
   .content > *:last-child { margin-bottom: 0; }
@@ -738,7 +739,7 @@
     <ul>
       <li>Declare a relation only if the source pages explicitly state or directly imply it. Do not invent relations because two entities "should" connect.</li>
       <li>Tier 3 predicates (IMPROVES, DEGRADES, LEADS_TO, SUITED_FOR, TARGETS, ACHIEVES) require a <code>confidence</code> field: <code>"declared"</code> when the page states the claim, <code>"inferred"</code> when only implied. Prefer a Tier 2 structural predicate or no relation when unsure.</li>
-      <li>Respect type constraints: MEASURES source must be Metric; AFFILIATED_WITH source must be Person; COVERS source must be Concept, ProprietaryTerm, or Taxonomy; OFFERS source must be Organization with a SoftwareProduct/Service/Platform/PhysicalProduct target.</li>
+      <li>Respect type constraints: MEASURES source must be Metric; AFFILIATED_WITH source must be Person; COVERS source must be Concept, ProprietaryTerm, or Taxonomy; OFFERS source must be Organization with a SoftwareProduct/<wbr>Service/<wbr>Platform/<wbr>PhysicalProduct target.</li>
       <li>Never declare both directions of an inverse pair (PART_OF/INCLUDES, IMPROVES/DEGRADES, ENABLES/PREVENTS, OFFERS/PRODUCED_BY) between the same two entities.</li>
       <li>Never invent inverted predicate forms (MEASURED_BY, ENABLED_BY, OFFERED_BY, etc.). Flip subject and target and use the standard predicate.</li>
       <li>Keep RELATES_TO under 20% of all relations. Reaching for it repeatedly means a better predicate exists or no relation is warranted.</li>
